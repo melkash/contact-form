@@ -65,13 +65,14 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Défintion de la route d'accueil
+app.get("/", (req, res) => {
+    res.render("index", { title: "Accueil - Boutique Artisanale" });
+});
+
 // Importer les routes
 app.use("/contact", contactRoutes)
 
-// Route de base
-app.get('/', (req, res) => {
-  res.send('Server en ligne et pret à recevoir des requêtes !')  
-});
 
 // lancement du serveur
 app.listen(PORT, () => {
