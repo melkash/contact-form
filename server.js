@@ -26,19 +26,18 @@ const hbs = create({
     });
 
 hbs.handlebars.registerHelper('eq', (a, b) => a === b);
-hbs.handlebars.registerPartial('header', 'views/partials/header.hbs');
 hbs.handlebars.registerPartial('footer', 'views/partials/footer.hbs');
 
 app.engine('.hbs', hbs.engine)
 app.set('view engine', '.hbs')
 
-// Middleware de session (Avant Passport)
+// Middleware de session 
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.MONGO_URI, // URL de connexion MongoDB
+        mongoUrl: process.env.MONGO_URI, 
     }),
     cookie: {
         secure: process.env.NODE_ENV === "production",
@@ -56,7 +55,7 @@ app.use((req, res, next) => {
       success: req.flash('success'),
       error: req.flash('error')
     };
-    console.log("📢 Messages flash transmis aux vues :", res.locals.messages); 
+     
     next();
   });
   

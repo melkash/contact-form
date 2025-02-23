@@ -4,6 +4,7 @@ import { sendEmail } from "../utils/mailer.js";
 
 const router = express.Router()
 
+
 router.get("/", (req, res) => {
     res.render("contact", { title: "Contactez-nous" })
 });
@@ -29,7 +30,7 @@ router.post("/", async (req, res, next) => {
           await newMessage.save();
   
           await sendEmail(
-            "abou_tal_ha@hotmail.com", // 📌 Remplace par l'email du propriétaire du site
+            "abou_tal_ha@hotmail.com", 
             `Nouveau message de ${name} - ${subject}`,
             `Vous avez reçu un message de ${name} (${email}) :\n\n${message}`
         );
