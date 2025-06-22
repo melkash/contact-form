@@ -31,6 +31,9 @@ hbs.handlebars.registerPartial('footer', 'views/partials/footer.hbs');
 app.engine('.hbs', hbs.engine)
 app.set('view engine', '.hbs')
 
+// ✅ Indique à Express qu’il est derrière un proxy (Render)
+app.set('trust proxy', 1);
+
 // Middleware de session 
 app.use(session({
     secret: process.env.SESSION_SECRET,
