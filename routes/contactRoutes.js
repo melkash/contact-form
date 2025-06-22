@@ -36,7 +36,7 @@ router.post("/", async (req, res, next) => {
         );
 
         req.flash("success", "Votre message a bien été envoyé !")
-        return res.redirect("/contact")
+        return res.redirect("/")
     }catch (error){
         console.error("Erreur lors de l'envoie du formulaire", error);
         return next(error);
