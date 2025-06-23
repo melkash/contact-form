@@ -76,15 +76,17 @@ app.get("/", (req, res) => {
 app.use("/contact", contactRoutes)
 
 
-// lancement du serveur
-app.listen(PORT, () => {
-    console.log(`Serveur en cours d'éxecution sur le port ${PORT}`)
-});
+
 
 //  connexion à MongoDB 
 const MONGO_URI = process.env.MONGO_URI; 
 
 mongoose.connect(MONGO_URI)
-.then(() => console.log("Connecté à MongoDB avec succès !"))
-.catch((err => console.error("Erreur de connexion à MongoDB", err)))
+.then(() => {console.log("Connecté à MongoDB avec succès !")
+    
+app.listen(PORT, () => {
+    console.log(`Serveur en cours d'exécution sur le port ${PORT}`)
+  });
+})
+.catch((err) => console.error("Erreur de connexion à MongoDB", err))
 
